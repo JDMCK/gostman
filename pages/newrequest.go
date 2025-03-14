@@ -15,7 +15,6 @@ type FormState struct {
 	Body       string
 }
 
-// NewRequestForm initializes the form
 func NewRequestForm(app *tview.Application, pages *tview.Pages) *tview.Form {
 	state := &FormState{
 		HTTPMethod: "GET",

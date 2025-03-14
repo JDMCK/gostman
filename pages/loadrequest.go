@@ -25,7 +25,7 @@ func LoadSavedRequest(app *tview.Application, pages *tview.Pages, selectedReq *r
 		req := reqs[i]
 		list.AddItem(req.URL, string(req.Method), 0, func() {
 			*selectedReq = req
-			pages.AddAndSwitchToPage("Execute Request", ExecutePage(app, pages, selectedReq), true)
+			pages.AddAndSwitchToPage("execute request", ExecutePage(app, pages, selectedReq), true)
 		})
 	}
 
@@ -96,7 +96,7 @@ func ExecutePage(app *tview.Application, pages *tview.Pages, req *request.Reques
 		).
 		AddButton(
 			"Go Back", func() {
-				pages.SwitchToPage("launch")
+				pages.SwitchToPage("load saved request")
 			},
 		)
 

@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bytes"
 	gostpages "gostman/pages"
 	"gostman/request"
+	"image/jpeg"
+	"os"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
@@ -16,7 +19,7 @@ func main() {
 	var modal = tview.NewModal().
 		SetBackgroundColor(tcell.ColorBlack).
 		SetButtonBackgroundColor(tcell.ColorNavy).
-		SetText("Welcome to Gostman👻!").
+		SetText("Welcome to Gostman 👻!").
 		AddButtons([]string{"Create New Request", "Load Saved Request"}).
 		SetDoneFunc(func(buttonIndex int, buttonLabel string) {
 			if buttonIndex == 0 {
@@ -41,9 +44,27 @@ func main() {
 			}
 		})
 	modal.Box.SetBackgroundColor(tcell.ColorBlack)
+
+	// Open the image file
+	file, _ := os.Open("./gosty.jpeg")
+	defer file.Close()
+	// Read the file into a byte slice
+	imgBytes, _ := os.ReadFile("./gosty.jpeg")
+	// Decode the image from bytes
+	gosty, _ := jpeg.Decode(bytes.NewReader(imgBytes))
+	// Assuming form is an object with an AddImage method
+	image := tview.NewImage().
+		SetImage(gosty).
+		SetColors(100)
+
+	flex := tview.NewFlex().
+		SetDirection(tview.FlexRow).
+		AddItem(image, 15, 0, false).
+		AddItem(modal, 0, 4, true)
+
 	pages.AddPage(
 		"launch",
-		modal,
+		flex,
 		true,
 		true,
 	)
