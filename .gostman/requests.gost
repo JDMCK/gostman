@@ -1,0 +1,35 @@
+[
+  {
+    "Method": "GET",
+    "URL": "https://jsonplaceholder.typicode.com/todos/1",
+    "Headers": {
+      "": ""
+    },
+    "Body": ""
+  },
+  {
+    "Method": "POST",
+    "URL": "https://jessemckenzie.com",
+    "Headers": {
+      "Content-Type": "application/json"
+    },
+    "Body": "{\n    \"data\": 1\n}"
+  },
+  {
+    "Method": "GET",
+    "URL": "https://echo.free.beeceptor.com?query=1",
+    "Headers": {
+      "header1": "data1",
+      "header2": "data2"
+    },
+    "Body": ""
+  },
+  {
+    "Method": "POST",
+    "URL": "https://echo.free.beeceptor.com",
+    "Headers": {
+      "Content-Type": "application/json"
+    },
+    "Body": "{\n    \"email\": \"jesse@jessemckenzie.com\",\n    \"password\": \"12345\"\n}"
+  }
+]
